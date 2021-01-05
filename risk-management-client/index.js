@@ -25,7 +25,7 @@ function printReport(report, outputPath) {
 program.command('run [output-path]').action(outputPath => {
   const PROTO_PATH = path.join(
     __dirname,
-    '../risk-management-server/riskmanagement.proto'
+    './riskmanagement.proto'
   )
   const proto = grpc.load(PROTO_PATH).riskmanagement
   const client = new proto.RiskManagement(
