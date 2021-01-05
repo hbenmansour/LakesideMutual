@@ -5,7 +5,7 @@
   "devDependencies": {
     "@beam-australia/react-env": "^2.1.2",
     "flow-bin": "^0.135.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "3.4.0",
     "redux-devtools": "^3.7.0"
   },
   "dependencies": {
@@ -24,7 +24,7 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.85.0",
     "whatwg-fetch": "^3.4.1",
-    "react-scripts": "3.4.3",
+    "react-scripts": "3.4.0",
     "@beam-australia/react-env": "2.1.2"
   },
   "scripts": {
