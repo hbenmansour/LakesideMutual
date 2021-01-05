@@ -1,6 +1,6 @@
 {
   "gRPC": {
-    "host": "localhost",
+    "host": "risk-management-server.lakesidemutual.svc.cluster.local",
     "port": 50051
   }
 }
