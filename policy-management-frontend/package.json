@@ -14,6 +14,7 @@
     "semantic-ui-vue": "^0.2.0",
     "semantic-ui-css": "^2.4.1",
     "vue-router": "^3.0.1",
+    "eslint": "^5.16.0",
     "@beam-australia/react-env": "^2.1.2",
     "@vue/cli-plugin-babel": "^3.4.0",
     "@vue/cli-plugin-eslint": "^3.4.0",
