@@ -28,7 +28,7 @@
     "react-env"
   },
   "scripts": {
-    "prestart": "react-env"
+    "prestart": "react-env",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
