@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: customer-management-backend
+  managedFields:
+  name: customer-management-backend
+spec:
+  host: customer-management-backend-lakeside-mutual.apps.cluster-paris-3e9b.paris-3e9b.example.opentlc.com
+  port:
+    targetPort: 8100-tcp
+  to:
+    kind: Service
+    name: customer-management-backend
+    weight: 100
+  wildcardPolicy: None

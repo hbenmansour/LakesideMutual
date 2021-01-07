@@ -1,0 +1,16 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: customer-management-backend
+  namespace: lakeside-mutual
+spec:
+  hosts:
+    - customer-management-backend-gw.apps.cluster-paris-3e9b.paris-3e9b.example.opentlc.com
+  gateways:
+    - lakeside-mutual/customer-management-backend
+  http:
+    - route:
+        - destination:
+            host: customer-management-backend.lakeside-mutual.svc.cluster.local
+            port:
+              number: 8100

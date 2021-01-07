@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: customer-management-frontend
+  name: customer-management-frontend
+spec:
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 3020
+  selector:
+    app: customer-management-frontend
+    deploymentconfig: customer-management-frontend
+  sessionAffinity: None
+  type: ClusterIP

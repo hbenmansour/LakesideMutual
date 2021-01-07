@@ -1,0 +1,16 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: customer-self-service-backend
+  namespace: lakeside-mutual
+spec:
+  hosts:
+    - customer-self-service-backend.apps.cluster-paris-3e9b.paris-3e9b.example.opentlc.com
+  gateways:
+    - lakeside-mutual/customer-self-service-backend
+  http:
+    - route:
+        - destination:
+            host: customer-self-service-backend.lakeside-mutual.svc.cluster.local
+            port:
+              number: 8080

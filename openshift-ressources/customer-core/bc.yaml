@@ -1,0 +1,43 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: customer-core
+  name: customer-core
+spec:
+  failedBuildsHistoryLimit: 1
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: customer-core:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: customer-core
+    git:
+      ref: master
+      uri: https://github.com/hbenmansour/LakesideMutual.git
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: java:openjdk-11-el7
+        namespace: openshift
+    type: Source
+  successfulBuildsHistoryLimit: 1
+  triggers:
+  - generic:
+      secretReference:
+        name: customer-core-generic-webhook-secret
+    type: Generic
+  - github:
+      secretReference:
+        name: customer-core-github-webhook-secret
+    type: GitHub
+  - imageChange:
+      lastTriggeredImageID: image-registry.openshift-image-registry.svc:5000/openshift/java@sha256:d5454e60f7f1f46f10296fa276e1b05e59044fab7761be6a2fdd142b5b27c7e4
+    type: ImageChange
+  - type: ConfigChange

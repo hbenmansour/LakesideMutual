@@ -1,0 +1,15 @@
+kind: Gateway
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: customer-self-service-backend
+  namespace: lakeside-mutual
+spec:
+  servers:
+    - hosts:
+        - customer-self-service-backend.apps.cluster-paris-3e9b.paris-3e9b.example.opentlc.com
+      port:
+        name: http
+        number: 80
+        protocol: HTTP
+  selector:
+    istio: ingressgateway

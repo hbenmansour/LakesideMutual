@@ -1,0 +1,43 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: customer-self-service-frontend
+  name: customer-self-service-frontend
+spec:
+  failedBuildsHistoryLimit: 1
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: customer-self-service-frontend:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: /customer-self-service-frontend
+    git:
+      ref: master
+      uri: https://github.com/hbenmansour/LakesideMutual
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: nodejs:12-ubi8
+        namespace: openshift
+    type: Source
+  successfulBuildsHistoryLimit: 1
+  triggers:
+  - generic:
+      secretReference:
+        name: customer-self-service-frontend-generic-webhook-secret
+    type: Generic
+  - github:
+      secretReference:
+        name: customer-self-service-frontend-github-webhook-secret
+    type: GitHub
+  - imageChange:
+      lastTriggeredImageID: image-registry.openshift-image-registry.svc:5000/openshift/nodejs@sha256:60e12250db082834ceb9056d1d2f82cdee795edbd79a4b23cb1f0426915c5360
+    type: ImageChange
+  - type: ConfigChange

@@ -1,0 +1,10 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: customer-management-frontend
+  managedFields:
+  name: customer-management-frontend
+spec:
+  lookupPolicy:
+    local: false

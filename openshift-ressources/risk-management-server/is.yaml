@@ -1,0 +1,9 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: risk-management-server
+  name: risk-management-server
+spec:
+  lookupPolicy:
+    local: false

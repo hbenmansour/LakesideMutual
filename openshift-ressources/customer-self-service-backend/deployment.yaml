@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: customer-self-service-backend
+  name: customer-self-service-backend
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: customer-self-service-backend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      creationTimestamp: null
+      labels:
+        app: customer-self-service-backend
+        deploymentconfig: customer-self-service-backend
+    spec:
+      containers:
+      - env:
+        - name: CUSTOMERCORE_BASEURL
+          value: http://customer-core:8110
+        - name: POLICYMANAGEMENT_TCPBROKERBINDADDRESS
+          value: tcp://policy-management-backend-queue:61616
+        image: image-registry.openshift-image-registry.svc:5000/lakeside-mutual/customer-self-service-backend
+        imagePullPolicy: Always
+        name: lakeside-mutual
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

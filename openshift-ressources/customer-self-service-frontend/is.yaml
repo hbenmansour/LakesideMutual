@@ -1,0 +1,9 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    app: customer-self-service-frontend
+  name: customer-self-service-frontend
+spec:
+  lookupPolicy:
+    local: false

@@ -1,0 +1,16 @@
+kind: VirtualService
+apiVersion: networking.istio.io/v1alpha3
+metadata:
+  name: policy-management-backend
+  namespace: lakeside-mutual
+spec:
+  hosts:
+    - policy-management-backend.apps.cluster-paris-3e9b.paris-3e9b.example.opentlc.com
+  gateways:
+    - lakeside-mutual/policy-management-backend
+  http:
+    - route:
+        - destination:
+            host: policy-management-backend.lakeside-mutual.svc.cluster.local
+            port:
+              number: 8090

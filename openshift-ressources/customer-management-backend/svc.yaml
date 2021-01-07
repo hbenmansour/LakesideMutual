@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: customer-management-backend
+  name: customer-management-backend
+spec:
+  ports:
+  - name: 8100-tcp
+    port: 8100
+    protocol: TCP
+    targetPort: 8100
+  selector:
+    app: customer-management-backend
+    deploymentconfig: customer-management-backend
+  sessionAffinity: None
+  type: ClusterIP

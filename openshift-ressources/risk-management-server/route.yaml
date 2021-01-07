@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: risk-management-server
+  name: risk-management-server
+spec:
+  host: risk-management-server-lakeside-mutual.apps.cluster-paris-3e9b.paris-3e9b.example.opentlc.com
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: risk-management-server
+    weight: 100
+  wildcardPolicy: None

@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: customer-self-service-frontend
+  name: customer-self-service-frontend
+spec:
+  host: customer-self-service-frontend-lakeside-mutual.apps.cluster-paris-3e9b.paris-3e9b.example.opentlc.com
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: customer-self-service-frontend
+    weight: 100
+  wildcardPolicy: None

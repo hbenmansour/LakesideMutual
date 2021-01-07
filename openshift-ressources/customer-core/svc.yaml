@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: customer-core
+  name: customer-core
+spec:
+  ports:
+  - name: 8110-tcp
+    port: 8110
+    protocol: TCP
+    targetPort: 8110
+  selector:
+    app: customer-core
+    deploymentconfig: customer-core
+  sessionAffinity: None
+  type: ClusterIP
